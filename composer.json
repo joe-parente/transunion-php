@@ -1,0 +1,13 @@
+{
+    "name": "petermartinez/Transunion-php",
+    "description": "Basic SDK for Trans Union XML API Details @ https://techservices.transunion.com/ctsporta",
+    "authors": [
+        {
+            "name": "Peter Martinez",
+            "email": "emailme@PeterMartinez.com"
+        }
+    ],  
+    "autoload": {
+        "psr-0": { "Transunion\\": ["src/"] }
+    }
+}
