@@ -29,12 +29,15 @@
 * @version 1.0.0
 *
 */
+
 namespace Transunion;
+
 use Exception;
 
-class Transunion
-{
-	const api_version = '2.8';
+class Transunion {
+
+    const api_version = '2.10';
+
 	private $mode = '';
 	private $base_url = '';
 	private $transactionControl = array();
@@ -137,7 +140,20 @@ class Transunion
 		return $this->request($product);
 	}
 
-
+    public function IDReport($firstName, $lastName, $ssn) {
+        $product = []; 
+        $product['code'] = '07770';
+        $product['permissiblePurpose']['code'] = 'EP';
+        $product['permissiblePurpose']['endUser'] = 'Accutrace';
+        $product['responseInstructions']['returnErrorText'] = 'true';
+        $product['subject']['number'] = '1';
+        $product['subject']['subjectRecord']['indicative']['name']['person']['first'] = $firstName;
+        $product['subject']['subjectRecord']['indicative']['name']['person']['last'] = $lastName;
+        $product['subject']['subjectRecord']['indicative']['socialSecurity']['number'] = $ssn;        
+        $product['subject']['subjectRecord']['addOnProduct']['code'] = '07220';
+        $product['subject']['subjectRecord']['addOnProduct']['scoreModelProduct'] = 'false';
+        return $this->request($product);  
+    }
 	/**
 	* (Private) Build CURL request
 	* @param array $product
