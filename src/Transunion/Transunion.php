@@ -195,7 +195,8 @@ class Transunion {
 			curl_setopt($ch, CURLOPT_SSLKEYPASSWD, $this->certificate['password']);
                         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 60);
 
-		    $response = curl_exec($ch);
+		    $reallyhuh = curl_exec($ch);
+                    $response = curl_exec($ch);
 		    curl_close($ch);
 		    return simplexml_load_string($response, 'SimpleXMLElement', LIBXML_NOCDATA);;
 
