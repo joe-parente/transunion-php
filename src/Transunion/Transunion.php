@@ -138,7 +138,7 @@ class Transunion {
         return $this->request($product);
     }
 
-    public function IDReport($firstName, $lastName, $ssn) {
+    public function IDReport($firstName, $lastName, $ssn, $dob) {
         $product = [];
         $product['code'] = '07770';
         $product['permissiblePurpose']['code'] = 'EP';
@@ -148,6 +148,7 @@ class Transunion {
         $product['subject']['subjectRecord']['indicative']['name']['person']['first'] = $firstName;
         $product['subject']['subjectRecord']['indicative']['name']['person']['last'] = $lastName;
         $product['subject']['subjectRecord']['indicative']['socialSecurity']['number'] = $ssn;
+        $product['subject']['subjectRecord']['indicative']['dateOfBirth'] = $dob;
         $product['subject']['subjectRecord']['addOnProduct']['code'] = '07220';
         $product['subject']['subjectRecord']['addOnProduct']['scoreModelProduct'] = 'false';
         return $this->request($product);
