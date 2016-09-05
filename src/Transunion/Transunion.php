@@ -178,6 +178,8 @@ class Transunion {
         $this->array_to_xml($request, $xml_user_info);
 
         $xml = $xml_user_info->asXML();
+        echo 'Request: ' . PHP_EOL;
+        echo $xml;
         try {
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -188,8 +190,8 @@ class Transunion {
             curl_setopt($ch, CURLOPT_POST, true);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
 
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
-            curl_setopt($ch, CURLOPT_CAPATH, '/etc/ssl/certs/');
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            //curl_setopt($ch, CURLOPT_CAPATH, '/etc/ssl/certs/');
             curl_setopt($ch, CURLOPT_SSLCERT, $this->certificate['crt']);
             curl_setopt($ch, CURLOPT_SSLKEY, $this->certificate['key']);
             curl_setopt($ch, CURLOPT_SSLCERTPASSWD, $this->certificate['password']);
@@ -197,6 +199,7 @@ class Transunion {
             curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 60);
 
             $response = curl_exec($ch);
+            echo "Repsonse: " . PHP_EOL;
             if (FALSE === $response) {
                 throw new Exception(curl_error($ch), curl_errno($ch));
             }
