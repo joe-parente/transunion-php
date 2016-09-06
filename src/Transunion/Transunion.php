@@ -190,7 +190,7 @@ class Transunion {
 
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
             // curl_setopt($ch, CURLOPT_SSLCERTTYPE, "PEM");
-            curl_setopt($ch, CURLOPT_CAPATH, '/etc/ssl/certs/');
+            //curl_setopt($ch, CURLOPT_CAPATH, '/etc/ssl/certs/');
             curl_setopt($ch, CURLOPT_SSLCERT, $this->certificate['crt']);
             curl_setopt($ch, CURLOPT_SSLKEY, $this->certificate['key']);
             curl_setopt($ch, CURLOPT_SSLCERTPASSWD, $this->certificate['password']);
