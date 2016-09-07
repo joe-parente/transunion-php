@@ -192,7 +192,7 @@ class Transunion {
 
             curl_setopt($ch, CURLOPT_VERBOSE, 1);
 
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
             curl_setopt($ch, CURLOPT_CAPATH, 'certs/');
             curl_setopt($ch, CURLOPT_SSLCERT, $this->certificate['crt']);
             curl_setopt($ch, CURLOPT_SSLKEY, $this->certificate['key']);
