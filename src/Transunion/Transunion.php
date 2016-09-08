@@ -193,7 +193,7 @@ class Transunion {
             curl_setopt($ch, CURLOPT_VERBOSE, 1);
 
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
-            curl_setopt($ch, CURLOPT_CAINFO, 'certs/cacerts.pem');
+            curl_setopt($ch, CURLOPT_CAINFO, '/var/www/prodonly/public/certs/cacerts.pem');
             curl_setopt($ch, CURLOPT_SSLCERT, $this->certificate['crt']);
             curl_setopt($ch, CURLOPT_SSLKEY, $this->certificate['key']);
             curl_setopt($ch, CURLOPT_SSLCERTPASSWD, $this->certificate['password']);
